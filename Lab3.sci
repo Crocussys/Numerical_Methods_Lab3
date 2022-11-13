@@ -75,11 +75,9 @@ A = inv(M) * N
 x_ans = x(1):0.01:x(count)
 y_ans = A(1) + A(2) .* x_ans + A(3) .* x_ans .^ 2
 
-plot2d(x_ans, y_ans, style=color("blue"), leg="Апроксимация");
+plot2d(x_ans, y_ans, style=color("blue"), leg="Аппроксимация");
 plot2d(x, y, style=-9, leg="Исходные данные");
 g=get('current_axes')
 g.children(1).children.mark_foreground = color("red")
 g.children(1).children.mark_background = color("red")
-
-
-xtitle("Апроксимация", "x", "y");
+xtitle("Аппроксимация", "x", "y");
