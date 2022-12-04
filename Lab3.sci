@@ -20,6 +20,7 @@ endfunction
 
 argv = sciargs()
 [m, argc] = size(argv)
+argc = argc + 2
 if argc >= 3 then
     if argv(3) == "-h" then
         usage()
@@ -71,9 +72,12 @@ M = [count, sum(x), sum(x2);
        sum(x), sum(x2), sum(x3);
        sum(x2), sum(x3), sum(x4)]
 N = [sum(y); sum(y2); sum(y3)]
-A = inv(M) * N
+B = inv(M)
+A = B * N
 x_ans = x(1):0.01:x(count)
 y_ans = A(1) + A(2) .* x_ans + A(3) .* x_ans .^ 2
+y_z = A(1) + A(2) .* x + A(3) .* x .^ 2
+e = abs(y - y_z)
 
 plot2d(x_ans, y_ans, style=color("blue"), leg="Аппроксимация");
 plot2d(x, y, style=-9, leg="Исходные данные");
